@@ -1,0 +1,12 @@
+# Site settings
+title: tls.li
+description: "Hardened TLS configuration examples"
+baseurl: ""
+url: "https://tls.li"
+github:
+  user:		kpcyrd
+  repo:		tls-li
+
+# Build settings
+markdown: kramdown
+permalink: pretty
