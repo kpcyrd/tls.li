@@ -29,3 +29,18 @@ apache2
 	SSLCipherSuite ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA:!RC4:HIGH:!MD5:!aNULL:!EDH
 	SSLHonorCipherOrder on
 	SSLCompression off
+
+postfix
+=======
+
+	smtpd_tls_cert_file=/etc/postfix/noisebridge.net-cert.pem
+	smtpd_tls_key_file=/etc/postfix/noisebridge.net-key.pem
+	smtpd_tls_ciphers = high
+	smtpd_tls_exclude_ciphers = aNULL, MD5, DES, 3DES, DES-CBC3-SHA, RC4-SHA, AES256-SHA, AES128-SHA
+	smtpd_use_tls =yes
+	smtp_tls_protocols = !SSLv2, !SSLv3, TLSv1
+	smtpd_tls_mandatory_protocols = TLSv1
+	smtp_tls_note_starttls_offer = yes
+	smtpd_tls_received_header = yes
+	smtpd_tls_session_cache_database = btree:${queue_directory}/smtpd_scache
+	smtp_tls_session_cache_database = btree:${queue_directory}/smtp_scache
