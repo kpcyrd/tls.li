@@ -14,3 +14,7 @@ nginx
 	# Only strong ciphers in PFS mode
 	ssl_ciphers {{ page.ciphers }};
 	ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+
+	# 31536000 == 1 year
+	add_header Strict-Transport-Security "max-age=31536000; includeSubdomains";
+	add_header X-Frame-Options DENY;
