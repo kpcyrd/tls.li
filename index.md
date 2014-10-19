@@ -3,6 +3,11 @@ layout: default
 ciphers: ECDHE-RSA-AES256-SHA:DHE-RSA-AES256-SHA:DHE-DSS-AES256-SHA:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA
 ---
 
+Generate CSR
+============
+
+	openssl req -new -sha256 -newkey rsa:4096 -keyout example.com.key -nodes -out example.com.csr
+
 nginx
 =====
 
