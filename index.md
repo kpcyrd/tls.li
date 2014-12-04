@@ -1,6 +1,7 @@
 ---
 layout: default
 ciphers: ECDHE-RSA-AES256-SHA:DHE-RSA-AES256-SHA:DHE-DSS-AES256-SHA:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA
+hsts: max-age=31536000; includeSubdomains; preload
 ---
 
 Generate CSR
@@ -21,7 +22,8 @@ nginx
 	ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
 
 	# 31536000 == 1 year
-	add_header Strict-Transport-Security "max-age=31536000; includeSubdomains";
+	# submit your page for preloading at http://hstspreload.appspot.com/
+	add_header Strict-Transport-Security "{{ page.hsts }}";
 	add_header X-Frame-Options DENY;
 
 apache2
@@ -34,6 +36,11 @@ apache2
 	SSLCipherSuite ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA:!RC4:HIGH:!MD5:!aNULL:!EDH
 	SSLHonorCipherOrder on
 	SSLCompression off
+
+	# 31536000 == 1 year
+	# submit your page for preloading at http://hstspreload.appspot.com/
+	Header set Strict-Transport-Security "{{ page.hsts }}"
+	Header set X-Frame-Options "DENY"
 
 postfix
 =======

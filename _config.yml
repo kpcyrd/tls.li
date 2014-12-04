@@ -5,7 +5,7 @@ baseurl: ""
 url: "https://tls.li"
 github:
   user:		kpcyrd
-  repo:		tls-li
+  repo:		tls.li
 
 # Build settings
 markdown: kramdown
