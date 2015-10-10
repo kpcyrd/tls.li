@@ -12,12 +12,22 @@ Generate CSR
 openssl req -new -sha256 -newkey rsa:4096 -keyout example.com.key -nodes -out example.com.csr
 ```
 
+Generate dhparam
+================
+
+```sh
+openssl dhparam 2048 -out /etc/nginx/dhparam.pem
+```
+
 nginx
 =====
 
 ```
 ssl_certificate /etc/nginx/example.com.crt;
 ssl_certificate_key /etc/nginx/example.com.key;
+
+# Diffie-Hellman parameter for DHE ciphersuites, recommended 2048 bits
+ssl_dhparam /etc/nginx/dhparam.pem;
 
 ssl_prefer_server_ciphers on;
 ssl_session_cache shared:SSL:50m;
