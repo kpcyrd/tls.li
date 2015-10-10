@@ -19,8 +19,8 @@ ssl_certificate /etc/nginx/example.com.crt;
 ssl_certificate_key /etc/nginx/example.com.key;
 
 ssl_prefer_server_ciphers on;
-ssl_session_cache shared:SSL:10m;
-ssl_session_timeout 10m;
+ssl_session_cache shared:SSL:50m;
+ssl_session_timeout 1d;
 
 ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
 ## Only strong ciphers in PFS mode
@@ -40,7 +40,7 @@ SSLEngine on
 SSLCertificateFile /etc/apache2/ssl/www.example.com.crt
 SSLCertificateKeyFile /etc/apache2/ssl/www.example.com.key
 
-SSLProtocol all -SSLv2 -SSLv3
+SSLProtocol all -SSLv2 -SSLv3 -TLSv1
 SSLCipherSuite {{ page.ciphers }}
 SSLHonorCipherOrder on
 
