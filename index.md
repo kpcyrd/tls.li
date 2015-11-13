@@ -10,6 +10,11 @@ Generate CSR
 
     openssl req -new -sha256 -newkey rsa:4096 -keyout example.com.key -nodes -out example.com.csr
 
+Self-sign
+=========
+
+    openssl x509 -req -days 365 -in example.com.csr -signkey example.com.key -out example.com.crt
+
 Generate dhparam
 ================
 
