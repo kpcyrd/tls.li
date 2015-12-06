@@ -40,7 +40,7 @@ nginx
     #ssl_ciphers '{{ page.mediumCiphers }}';
 
     # 31536000 == 1 year
-    # submit your page for preloading at http://hstspreload.appspot.com/
+    # submit your page for preloading at https://hstspreload.appspot.com/
     add_header Strict-Transport-Security "{{ page.hsts }}";
     add_header X-Frame-Options DENY;
 
@@ -56,7 +56,7 @@ apache2
     SSLHonorCipherOrder on
 
     # 31536000 == 1 year
-    # submit your page for preloading at http://hstspreload.appspot.com/
+    # submit your page for preloading at https://hstspreload.appspot.com/
     Header alway set Strict-Transport-Security "{{ page.hsts }}"
     Header alway set X-Frame-Options "DENY"
 
